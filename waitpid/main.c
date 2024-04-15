@@ -12,17 +12,23 @@ int main(void) {
 
   pid1 = fork();
   if (-1 == pid1) {
+    perror("PID1");
+    return (EXIT_FAILURE);
   }
   if (pid1 == 0) {
     sleep(3);
     printf("The %d {pid1} finished execution\n", pid1);
+    return (EXIT_SUCCESS);
   }
   pid2 = fork();
   if (-1 == pid2) {
+    perror("PID2");
+    return (EXIT_FAILURE);
   }
   if (pid2 == 0) {
     sleep(1);
     printf("The %d {pid2} finished execution\n", pid2);
+    return (EXIT_SUCCESS);
   }
   wait(NULL);
   wait(NULL);
