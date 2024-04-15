@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/_types/_null.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
@@ -36,6 +35,8 @@ int main(void) {
     close(fd[1]);
     execlp("grep", "grep", "packets", NULL);
   }
+  (void)close(fd[0]);
+  (void)close(fd[1]);
   waitpid(pid1, NULL, 0);
   waitpid(pid2, NULL, 0);
   return (EXIT_SUCCESS);
