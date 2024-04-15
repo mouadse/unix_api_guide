@@ -9,11 +9,16 @@
 
 int main(void) {
   // code here
-  pid_t pid;
+  char *file_name = "names.txtt";
+  int fd = open(file_name, O_RDWR, 0777);
+  if (-1 == fd) {
+    perror("Open!!!");
+    return (EXIT_FAILURE);
+  }
 
-  pid = getpid();
+  int ret = unlink(file_name);
 
-  printf("The proc id is %d\n", pid);
-
+  if (!ret)
+    printf("File deleted !!!\n");
   return (EXIT_SUCCESS);
 }
