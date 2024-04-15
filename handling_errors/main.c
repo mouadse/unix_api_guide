@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/_types/_null.h>
 #include <sys/_types/_ssize_t.h>
 #include <unistd.h>
 
@@ -20,6 +21,5 @@ int main(void) {
   // another way is using strerror
   char *err = strerror(errno);
   printf("The msg error is  --> %s\n", err);
-
   return (EXIT_SUCCESS);
 }
