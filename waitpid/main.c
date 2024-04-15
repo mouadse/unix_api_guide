@@ -30,7 +30,9 @@ int main(void) {
     printf("The %d {pid2} finished execution\n", pid2);
     return (EXIT_SUCCESS);
   }
-  wait(NULL);
-  wait(NULL);
+  int ret1 = wait(NULL);
+  printf("Waited for %d\n", ret1);
+  int ret2 = wait(NULL);
+  printf("Waited for %d\n", ret2);
   return (EXIT_SUCCESS);
 }
