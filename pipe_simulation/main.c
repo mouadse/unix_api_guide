@@ -20,10 +20,23 @@ int main(void) {
     return (EXIT_FAILURE);
   } else if (pid1 == 0) {
     // child process 1 for ping command
+    dup2(fd[1], STDOUT_FILENO);
+    close(fd[0]);
+    close(fd[1]);
     execlp("ping", "ping", "-c", "3", "google.com", NULL);
-  } else {
-    wait(NULL);
-    printf("The child finished!!!\n");
   }
+  pid_t pid2 = fork();
+  if (pid2 < 0) {
+    perror("2nd Fork 💀");
+    return (EXIT_FAILURE);
+  } else if (pid2 == 0) {
+    // Child proc 2 for grep command
+    dup2(fd[0], STDIN_FILENO);
+    close(fd[0]);
+    close(fd[1]);
+    execlp("grep", "grep", "rtt", NULL);
+  }
+  waitpid(pid1, NULL, 0);
+  waitpid(pid2, NULL, 0);
   return (EXIT_SUCCESS);
 }
