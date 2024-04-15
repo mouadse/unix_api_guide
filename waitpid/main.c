@@ -17,7 +17,7 @@ int main(void) {
   }
   if (pid1 == 0) {
     sleep(3);
-    printf("The %d {pid1} finished execution\n", pid1);
+    printf("The %d {pid1} finished execution\n", getpid());
     return (EXIT_SUCCESS);
   }
   pid2 = fork();
@@ -27,7 +27,7 @@ int main(void) {
   }
   if (pid2 == 0) {
     sleep(1);
-    printf("The %d {pid2} finished execution\n", pid2);
+    printf("The %d {pid2} finished execution\n", getpid());
     return (EXIT_SUCCESS);
   }
   int ret1 = wait(NULL);
