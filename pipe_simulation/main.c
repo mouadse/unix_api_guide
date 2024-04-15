@@ -34,7 +34,7 @@ int main(void) {
     dup2(fd[0], STDIN_FILENO);
     close(fd[0]);
     close(fd[1]);
-    execlp("grep", "grep", "rtt", NULL);
+    execlp("grep", "grep", "packets", NULL);
   }
   waitpid(pid1, NULL, 0);
   waitpid(pid2, NULL, 0);
