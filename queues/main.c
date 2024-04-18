@@ -13,6 +13,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define EXIT_SUCCESSZ 0
+
 int	main(void)
 {
 	printf("Hello, World!\n");
